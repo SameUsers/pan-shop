@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Адаптивность -->
     <title>Product Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -21,13 +21,14 @@
                     <img src="image4.jpg" alt="Thumbnail 4" onclick="showImage('image4.jpg')">
                     <img src="image5.jpg" alt="Thumbnail 5" onclick="showImage('image5.jpg')">
                     <img src="image6.jpg" alt="Thumbnail 6" onclick="showImage('image6.jpg')">
-                     <img src="image7.jpg" alt="Thumbnail 7" onclick="showImage('image7.jpg')">
-                     <img src="image8.jpg" alt="Thumbnail 8" onclick="showImage('image8.jpg')">
-                     <img src="image9.jpg" alt="Thumbnail 9" onclick="showImage('image9.jpg')">
+                    <img src="image7.jpg" alt="Thumbnail 7" onclick="showImage('image7.jpg')">
+                    <img src="image8.jpg" alt="Thumbnail 8" onclick="showImage('image8.jpg')">
+                    <img src="image9.jpg" alt="Thumbnail 9" onclick="showImage('image9.jpg')">
                 </div>
                 <button class="nav-button" onclick="scrollThumbnails(1)">&#8594;</button>
             </div>
         </div>
+
         <div class="additional-description">
             <h2>О товаре</h2>
             <div class="additional-info">
@@ -41,10 +42,12 @@
                 </div>
             </div>
         </div>
+
         <div class="description">
             <h2>Описание</h2>
             <p>Тепловентилятор – это идеальный помощник для создания комфортной температуры в вашем доме или офисе...</p>
         </div>
+
         <div class="form-container">
             <form id="orderForm">
                 <label for="name">Name:</label>
@@ -63,7 +66,7 @@
 
         function scrollThumbnails(direction) {
             const thumbnailsContainer = document.querySelector('.thumbnails');
-            const scrollAmount = 80;
+            const scrollAmount = 80; 
             thumbnailsContainer.scrollLeft += direction * scrollAmount;
         }
 
