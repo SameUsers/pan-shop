@@ -8,9 +8,6 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 /* Стили для основного контента */
@@ -81,8 +78,7 @@ body {
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    margin-left: 20px; /* Отступ между изображением и дополнительным описанием */
-    width: 300px; /* Фиксированная ширина для дополнительного описания */
+    margin-top: 20px; /* Отступ сверху, чтобы отделить от изображения */
 }
 
 /* Описание товара */
@@ -118,64 +114,39 @@ button {
     color: #fff;
     cursor: pointer;
 }
-button:hover
-
- {
+button:hover {
     background-color: #45a049;
 }
 
 /* Стили для блока дополнительного описания */
 .additional-info {
     display: flex;
-    flex-direction: column; /* Расположение характеристик по вертикали */
-    margin-top: 20px; /* Отступ сверху */
+    flex-direction: column;
+    gap: 5px; /* Отступ между характеристиками */
 }
-
 .characteristic {
     display: flex;
-    justify-content: space-between; /* Разделяет элементы по краям */
-    padding: 10px 0; /* Отступы сверху и снизу */
-    border-bottom: 1px solid #444; /* Линия между характеристиками */
+    justify-content: space-between;
 }
 
-.characteristic span {
-    flex: 1; /* Разделяет пространство между характеристикой и значением */
-}
-
-/* Если нужно, чтобы текст был выровнен по правому краю */
-.characteristic span:last-child {
-    text-align: right; /* Выровнять значение по правому краю */
-}
-
-/* Медиа-запросы для мобильной версии */
+/* Мобильные стили */
 @media (max-width: 768px) {
     .main-content {
-        flex-direction: column; /* Устанавливаем вертикальную ориентацию */
+        flex-direction: column; /* Расположение блоков вертикально */
     }
 
     .thumbnail-panel {
         width: 100%; /* Ширина панели миниатюр */
-        order: 1; /* Перемещение панели миниатюр на верх */
+        flex-basis: 100%; /* Занимает 100% ширины */
     }
 
     .selected-image {
-        width: 100%; /* Ширина для выбранного изображения */
-        order: 2; /* Перемещение выбранного изображения под панель миниатюр */
+        width: 100%; /* Ширина выбранного изображения */
+        margin: 20px 0; /* Отступ сверху и снизу */
     }
 
-    .additional-description {
-        width: 100%; /* Ширина для дополнительного описания */
-        order: 3; /* Перемещение дополнительного описания под изображением */
-        margin-left: 0; /* Убираем отступ */
-    }
-
-    .description {
-        width: 100%; /* Ширина для описания товара */
-        order: 4; /* Перемещение основного описания под дополнительным */
-    }
-
-    .form-container {
-        width: 100%; /* Ширина для формы */
-        order: 5; /* Перемещение формы под описанием товара */
+    .additional-description, .description, .form-container {
+        width: 100%; /* Занимает 100% ширины */
+        margin-top: 20px; /* Отступ сверху */
     }
 }
