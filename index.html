@@ -47,32 +47,18 @@
         </div>
         <div class="form-container">
             <form id="orderForm">
-                <label for="name">Имя:</label>
+                <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-                <label for="phone">Телефон:</label>
+                <label for="phone">Phone:</label>
                 <input type="tel" id="phone" name="phone" required>
-                <button type="submit">Отправить</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>
 
     <script>
-        let currentIndex = 0;
-        const images = [
-            'image1.jpg',
-            'image2.jpg',
-            'image3.jpg',
-            'image4.jpg',
-            'image5.jpg',
-            'image6.jpg',
-            'image7.jpg',
-            'image8.jpg',
-            'image9.jpg',
-        ];
-
         function showImage(src) {
             document.getElementById('mainImage').src = src;
-            currentIndex = images.indexOf(src);
         }
 
         function scrollThumbnails(direction) {
@@ -80,49 +66,55 @@
             const scrollAmount = 80;
             thumbnailsContainer.scrollLeft += direction * scrollAmount;
         }
-        
-        document.getElementById('mainImage').addEventListener('touchstart', swipeHandler);
-        
-        function swipeHandler(e) {
-            const touch = e.touches[0];
-            const startX = touch.clientX;
 
-            const moveHandler = (e) => {
-                const touchMove = e.touches[0];
-                const endX = touchMove.clientX;
+        document.getElementById('orderForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
 
-                if (startX - endX > 50) {
-                    showNextImage();
-                    removeEventListeners();
-                } else if (endX - startX > 50) {
-                    showPrevImage();
-                    removeEventListeners();
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, phone }),
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        // Добавление поддержки свайпов
+        let touchStartX = 0;
+
+        const mainImage = document.getElementById('mainImage');
+        const thumbnails = document.querySelectorAll('.thumbnails img');
+
+        mainImage.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        mainImage.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                // Свайп влево
+                const currentSrc = mainImage.src.split('/').pop();
+                const currentIndex = Array.from(thumbnails).findIndex(img => img.src.split('/').pop() === currentSrc);
+                if (currentIndex < thumbnails.length - 1) {
+                    showImage(thumbnails[currentIndex + 1].src);
                 }
-            };
+            } else if (touchEndX - touchStartX > 50) {
+                // Свайп вправо
+                const currentSrc = mainImage.src.split('/').pop();
+                constДля завершения функции свайпа для смены изображений и доработки кода, добавьте следующие строки:
 
-            const endHandler = () => {
-                removeEventListeners();
-            };
-
-            const removeEventListeners = () => {
-                window.removeEventListener('touchmove', moveHandler);
-                window.removeEventListener('touchend', endHandler);
-            };
-
-            window.addEventListener('touchmove', moveHandler);
-            window.addEventListener('touchend', endHandler);
-        }
-
-        function showNextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(images[currentIndex]);
-        }
-
-        function showPrevImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            showImage(images[currentIndex]);
-        }
-
+```javascript
+                const currentIndex = Array.from(thumbnails).findIndex(img => img.src.split('/').pop() === currentSrc);
+                if (currentIndex > 0) {
+                    showImage(thumbnails[currentIndex - 1].src);
+                }
+            }
+        });
     </script>
 </body>
 </html>
