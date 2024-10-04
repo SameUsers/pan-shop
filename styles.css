@@ -77,6 +77,7 @@ body {
     cursor: pointer;
     border-radius: 4px; /* Добавляем радиус к кнопкам */
     flex: none; /* Не растягиваем кнопки */
+    height: 40px; /* Указываем фиксированную высоту кнопок */
 }
 
 .nav-button:hover {
@@ -174,9 +175,11 @@ button:hover {
     .main-content {
         flex-direction: column; /* Позиционирование элементов в столбик */
     }
-    
+
     .thumbnail-panel {
-        flex-direction: column; /* Вертикальное расположение для мобильной версии */
+        flex-direction: row; /* Горизонтальное расположение для мобильной версии */
+        justify-content: space-between; /* Расположение кнопок и изображений */
+        overflow-x: auto; /* Убираем вертикальный скролл */
     }
 
     .thumbnail-panel img {
