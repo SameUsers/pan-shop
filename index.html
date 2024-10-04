@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Добавляем мета-тег для мобильных устройств -->
     <title>Product Page</title>
     <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
@@ -14,7 +14,7 @@
                 <img id="mainImage" src="image1.jpg" alt="Selected Image">
             </div>
 
-            <!-- Левая панель миниатюр -->
+            <!-- Панель миниатюр -->
             <div class="thumbnail-panel">
                 <button class="nav-button" onclick="scrollThumbnails(-1)">&#8592;</button>
                 <div class="thumbnails">
@@ -36,8 +36,14 @@
         <div class="additional-description">
             <h2>О товаре</h2>
             <div class="additional-info">
-                <div class="characteristic"><span>Мощность, Вт:</span><span>1500</span></div>
-                <div class="characteristic"><span>Вид обогревателя:</span><span>Тепловентилятор</span></div>
+                <div class="characteristic">
+                    <span>Мощность</span>
+                    <span>1500 Вт</span>
+                </div>
+                <div class="characteristic">
+                    <span>Вид обогревателя</span>
+                    <span>Тепловентилятор</span>
+                </div>
             </div>
         </div>
 
@@ -45,22 +51,18 @@
         <div class="description">
             <h2>Описание</h2>
             <p>
-                Тепловентилятор – это идеальный помощник для создания комфортной температуры в вашем доме или офисе в холодное время года. Устройство быстро и эффективно обогревает пространство, благодаря чему вы сможете чувствовать себя уютно и защищено даже в самые холодные дни.<br>
-                Компактные размеры и лёгкий вес делают тепловентилятор удобным в транспортировке и установке в любом помещении, будь то комната, кухня или офис. Он отлично вписывается в интерьер благодаря простому, но стильному дизайну. Независимо от того, нужен ли вам временный обогрев или постоянное поддержание нужной температуры, этот прибор справится с любой задачей.<br>
-                Устройство обладает регулируемыми температурными режимами, что позволяет настраивать обогрев под ваши личные предпочтения. Вы можете экономить электроэнергию, выбирая режимы с низким потреблением, или быстро прогревать помещение на максимальной мощности. Тепловентилятор также оснащен функцией автоматического отключения при перегреве, что обеспечивает вашу безопасность и позволяет спокойно использовать его даже в отсутствие взрослых.<br>
-                Благодаря бесшумной работе, вы сможете наслаждаться теплом, не отвлекаясь на лишние звуки. Это делает тепловентилятор отличным выбором как для дома, так и для рабочего пространства. Он станет вашим незаменимым спутником в холодное время года, обеспечив комфорт и уют для всей семьи или коллектива.<br>
-                Не упустите возможность улучшить качество своего пространства с помощью этого многофункционального прибора. Тепловентилятор – это выгодное и актуальное решение для вашего комфорта. Ощутите тепло и уют в каждом уголке вашего дома с помощью этого надежного и эффективного устройства.<br>
+                Тепловентилятор – это идеальный помощник для создания комфортной температуры в вашем доме или офисе в холодное время года...
             </p>
         </div>
 
         <!-- Форма заказа -->
         <div class="form-container">
             <form id="orderForm">
-                <label for="name">Имя:</label>
+                <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-                <label for="phone">Телефон:</label>
+                <label for="phone">Phone:</label>
                 <input type="tel" id="phone" name="phone" required>
-                <button type="submit">Отправить</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>
@@ -73,7 +75,7 @@
         function scrollThumbnails(direction) {
             const thumbnailsContainer = document.querySelector('.thumbnails');
             const scrollAmount = 80; // Указываем количество пикселей для прокрутки
-            thumbnailsContainer.scrollLeft += direction * scrollAmount; // Изменили scrollTop на scrollLeft
+            thumbnailsContainer.scrollLeft += direction * scrollAmount;
         }
 
         document.getElementById('orderForm').addEventListener('submit', async (e) => {
@@ -92,6 +94,26 @@
             const result = await response.json();
             alert(result.message);
         });
+
+        // Обработка свайпов
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        const handleSwipe = (event) => {
+            touchendX = event.changedTouches[0].screenX;
+            handleGesture();
+        };
+
+        const handleGesture = () => {
+            if (touchendX < touchstartX) scrollThumbnails(1); // Swipe left
+            if (touchendX > touchstartX) scrollThumbnails(-1); // Swipe right
+        };
+
+        document.querySelector('.thumbnails').addEventListener('touchstart', (event) => {
+            touchstartX = event.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.thumbnails').addEventListener('touchend', handleSwipe);
     </script>
 </body>
 </html>
