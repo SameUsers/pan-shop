@@ -8,9 +8,6 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 /* Стили для основного контента */
@@ -26,14 +23,15 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 100px;
+    width: 100px; /* Ширина панели миниатюр */
     background-color: #2a2a2a;
     padding: 10px;
     border-radius: 8px;
     overflow: hidden; /* Скрываем ползунок */
+    height: 400px; /* Фиксированная высота панели миниатюр */
 }
 .thumbnails {
-    height: 400px; /* Фиксированная высота для панели с миниатюрами */
+    height: 300px; /* Высота для миниатюр */
     overflow-y: auto; /* Автоматическая прокрутка внутри панели */
 }
 .thumbnail-panel img {
@@ -62,8 +60,7 @@ body {
 
 /* Основное изображение */
 .selected-image {
-    width: 100%; /* Ширина для блока с изображением */
-    height: 400px; /* Фиксированная высота для блока с изображением */
+    flex: 1; /* Позволяет блоку выбранного изображения растягиваться */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,8 +79,6 @@ body {
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    width: 100%; /* Ширина для дополнительного описания */
-    height: 200px; /* Фиксированная высота для дополнительного описания */
 }
 
 /* Описание товара */
@@ -93,7 +88,6 @@ body {
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px; /* Отступ сверху, чтобы отделить от изображения */
-    height: 200px; /* Фиксированная высота для описания товара */
 }
 
 /* Стили для формы */
@@ -103,7 +97,6 @@ body {
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    height: 200px; /* Фиксированная высота для формы */
 }
 form {
     display: flex;
@@ -123,41 +116,4 @@ button {
 }
 button:hover {
     background-color: #45a049;
-}
-
-/* Стили для блока дополнительного описания */
-.additional-info {
-    display: flex;
-    flex-direction: column; /* Расположение характеристик по вертикали */
-    margin-top: 20px; /* Отступ сверху */
-}
-
-.characteristic {
-    display: flex;
-    justify-content: space-between; /* Разделяет элементы по краям */
-    padding: 10px 0; /* Отступы сверху и снизу */
-    border-bottom: 1px solid #444; /* Линия между характеристиками */
-}
-
-.characteristic span {
-    flex: 1; /* Разделяет пространство между характеристикой и значением */
-}
-
-/* Если нужно, чтобы текст был выровнен по правому краю */
-.characteristic span:last-child {
-    text-align: right; /* Выровнять значение по правому краю */
-}
-
-/* Стили для кнопок навигации */
-.nav-button {
-    background-color: #007BFF; /* Цвет кнопок */
-    color: white; /* Цвет текста */
-    border: none; /* Убираем рамку */
-    padding: 10px; /* Отступы */
-    cursor: pointer; /* Курсор в виде указателя */
-    font-size: 18px; /* Размер шрифта */
-}
-
-.nav-button:hover {
-    background-color: #0056b3; /* Цвет кнопки при наведении */
 }
