@@ -5,7 +5,6 @@ body {
     background-color: #1a1a1a;
     color: #f0f0f0;
 }
-
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -16,8 +15,8 @@ body {
 .main-content {
     display: flex;
     flex-direction: column; /* Вертикальное расположение для мобильной версии */
-    gap: 30px; /* Увеличено с 20px до 30px */
-    margin-top: 30px; /* Увеличено с 20px до 30px */
+    gap: 20px;
+    margin-top: 20px;
 }
 
 /* Стили для основного изображения */
@@ -30,7 +29,6 @@ body {
     border-radius: 8px;
     padding: 10px;
 }
-
 .selected-image img {
     max-width: 100%;
     max-height: 500px;
@@ -41,21 +39,19 @@ body {
 .thumbnail-panel {
     display: flex;
     align-items: center; /* Выравнивание по центру */
-    gap: 15px; /* Увеличено с 10px до 15px */
+    gap: 10px;
     width: 100%; /* Ширина панели миниатюр */
     background-color: #2a2a2a;
-    padding: 15px; /* Увеличено с 10px до 15px */
+    padding: 10px;
     border-radius: 8px;
     overflow: hidden; /* Скрываем ползунок */
 }
-
 .thumbnails {
     display: flex; /* Устанавливаем flex для горизонтального прокручивания */
     overflow-x: auto; /* Автоматическая прокрутка по оси X */
-    gap: 15px; /* Увеличено с 10px до 15px */
+    gap: 10px; /* Отступ между миниатюрами */
     padding: 10px 0; /* Отступ сверху и снизу для прокрутки */
 }
-
 .thumbnail-panel img {
     width: 80px; /* Ширина миниатюры */
     height: auto;
@@ -63,7 +59,6 @@ body {
     border-radius: 4px;
     transition: transform 0.2s ease;
 }
-
 .thumbnail-panel img:hover {
     transform: scale(1.1);
 }
@@ -77,7 +72,6 @@ body {
     cursor: pointer;
     border-radius: 4px; /* Добавляем радиус к кнопкам */
 }
-
 .nav-button:hover {
     background-color: #45a049;
 }
@@ -85,41 +79,39 @@ body {
 /* Дополнительное описание */
 .additional-description {
     background-color: #2a2a2a;
-    padding: 30px; /* Увеличено с 20px до 30px */
+    padding: 20px;
     border-radius: 8px;
-    margin-top: 30px; /* Увеличено с 20px до 30px */
+    margin-top: 20px; /* Отступ сверху, чтобы отделить от изображения */
 }
 
 /* Описание товара */
 .description {
     width: 100%;
     background-color: #2a2a2a;
-    padding: 30px; /* Увеличено с 20px до 30px */
+    padding: 20px;
     border-radius: 8px;
-    margin-top: 30px; /* Увеличено с 20px до 30px */
+    margin-top: 20px; /* Отступ сверху, чтобы отделить от изображения */
 }
 
 /* Стили для формы */
 .form-container {
     width: 100%;
-    margin-top: 30px; /* Увеличено с 20px до 30px */
+    margin-top: 20px;
     background-color: #2a2a2a;
-    padding: 30px; /* Увеличено с 20px до 30px */
+    padding: 20px;
+    border-radius: 8px;
 }
-
 label {
     margin-bottom: 5px;
     display: block; /* Изменено для корректного отображения на мобильных устройствах */
 }
-
 input {
-    margin-bottom: 15px; /* Увеличено с 10px до 15px */
+    margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%; /* Занимает 100% ширины */
 }
-
 button {
     padding: 10px;
     background-color: #4CAF50;
@@ -129,7 +121,6 @@ button {
     cursor: pointer;
     width: 100%; /* Занимает 100% ширины */
 }
-
 button:hover {
     background-color: #45a049;
 }
@@ -152,6 +143,6 @@ button:hover {
 
     .additional-description, .description, .form-container {
         width: 100%; /* Занимает 100% ширины */
-        margin-top: 30px; /* Увеличено с 20px до 30px */
+        margin-top: 20px; /* Отступ сверху */
     }
 }
