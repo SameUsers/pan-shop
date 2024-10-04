@@ -47,11 +47,11 @@
         </div>
         <div class="form-container">
             <form id="orderForm">
-                <label for="name">Name:</label>
+                <label for="name">Имя:</label>
                 <input type="text" id="name" name="name" required>
-                <label for="phone">Phone:</label>
+                <label for="phone">Телефон:</label>
                 <input type="tel" id="phone" name="phone" required>
-                <button type="submit">Submit</button>
+                <button type="submit">Отправить</button>
             </form>
         </div>
     </div>
@@ -86,7 +86,6 @@
 
         // Добавление поддержки свайпов
         let touchStartX = 0;
-
         const mainImage = document.getElementById('mainImage');
         const thumbnails = document.querySelectorAll('.thumbnails img');
 
@@ -96,23 +95,15 @@
 
         mainImage.addEventListener('touchend', (e) => {
             const touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) {
-                // Свайп влево
-                const currentSrc = mainImage.src.split('/').pop();
-                const currentIndex = Array.from(thumbnails).findIndex(img => img.src.split('/').pop() === currentSrc);
-                if (currentIndex < thumbnails.length - 1) {
-                    showImage(thumbnails[currentIndex + 1].src);
-                }
-            } else if (touchEndX - touchStartX > 50) {
-                // Свайп вправо
-                const currentSrc = mainImage.src.split('/').pop();
-                constДля завершения функции свайпа для смены изображений и доработки кода, добавьте следующие строки:
+            const currentSrc = mainImage.src.split('/').pop();
+            const currentIndex = Array.from(thumbnails).findIndex(img => img.src.split('/').pop() === currentSrc);
 
-```javascript
-                const currentIndex = Array.from(thumbnails).findIndex(img => img.src.split('/').pop() === currentSrc);
-                if (currentIndex > 0) {
-                    showImage(thumbnails[currentIndex - 1].src);
-                }
+            if (touchStartX - touchEndX > 50 && currentIndex < thumbnails.length - 1) {
+                // Свайп влево
+                showImage(thumbnails[currentIndex + 1].src);
+            } else if (touchEndX - touchStartX > 50 && currentIndex > 0) {
+                // Свайп вправо
+                showImage(thumbnails[currentIndex - 1].src);
             }
         });
     </script>
