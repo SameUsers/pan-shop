@@ -19,7 +19,7 @@ body {
 /* Основной контент */
 .main-content {
     display: flex;
-    flex-direction: column; /* Изменено для мобильной версии */
+    flex-direction: column;
     gap: 20px;
     margin-top: 20px;
 }
@@ -27,13 +27,13 @@ body {
 /* Блок с миниатюрами */
 .thumbnail-panel {
     display: flex;
-    flex-direction: row; /* Горизонтальное размещение для мобильной версии */
+    flex-direction: row;
     align-items: center;
     gap: 10px;
     background-color: #2a2a2a;
     padding: 10px;
     border-radius: 8px;
-    overflow-x: auto; /* Горизонтальная прокрутка */
+    overflow-x: auto;
     width: 100%;
 }
 
@@ -62,7 +62,7 @@ body {
     padding: 10px;
     cursor: pointer;
     border-radius: 4px;
-    flex-shrink: 0; /* Не позволяет кнопкам сжиматься */
+    flex-shrink: 0;
 }
 
 .nav-button:hover {
@@ -71,7 +71,7 @@ body {
 
 /* Основное изображение */
 .selected-image {
-    width: 100%; /* Растягивается на всю ширину контейнера */
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,12 +91,12 @@ body {
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    width: 100%; /* Занимает всю доступную ширину */
+    width: 100%;
 }
 
 /* Описание товара */
 .description {
-    width: 100%; /* Занимает всю доступную ширину */
+    width: 100%;
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
@@ -105,7 +105,7 @@ body {
 
 /* Стили для формы */
 .form-container {
-    width: 100%; /* Занимает всю доступную ширину */
+    width: 100%;
     margin-top: 20px;
     background-color: #2a2a2a;
     padding: 20px;
@@ -159,20 +159,20 @@ button:hover {
 
 /* Мобильные стили */
 @media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+    
     .main-content {
-        flex-direction: column; /* Вертикальное расположение для мобильных */
+        flex-direction: column;
     }
 
     .thumbnail-panel {
-        flex-direction: row; /* Горизонтальное расположение для списка миниатюр */
-        overflow-x: auto; /* Прокрутка по горизонтали */
+        flex-direction: row;
+        overflow-x: auto;
     }
 
-    .selected-image {
-        width: 100%; /* Растягивается на всю ширину для мобильной версии */
-    }
-
-    .additional-description, .description, .form-container {
-        width: 100%; /* Занимает всю ширину на мобильных устройствах */
+    .selected-image, .additional-description, .description, .form-container {
+        width: 100%;
     }
 }
