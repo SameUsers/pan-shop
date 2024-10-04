@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Добавляем мета-тег для мобильных устройств -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Добавлен метатег для адаптивности -->
     <title>Product Page</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -13,8 +13,7 @@
             <div class="selected-image">
                 <img id="mainImage" src="image1.jpg" alt="Selected Image">
             </div>
-
-            <!-- Панель миниатюр -->
+            <!-- Левая панель миниатюр -->
             <div class="thumbnail-panel">
                 <button class="nav-button" onclick="scrollThumbnails(-1)">&#8592;</button>
                 <div class="thumbnails">
@@ -24,9 +23,6 @@
                     <img src="image4.jpg" alt="Thumbnail 4" onclick="showImage('image4.jpg')">
                     <img src="image5.jpg" alt="Thumbnail 5" onclick="showImage('image5.jpg')">
                     <img src="image6.jpg" alt="Thumbnail 6" onclick="showImage('image6.jpg')">
-                    <img src="image7.jpg" alt="Thumbnail 7" onclick="showImage('image7.jpg')">
-                    <img src="image8.jpg" alt="Thumbnail 8" onclick="showImage('image8.jpg')">
-                    <img src="image9.jpg" alt="Thumbnail 9" onclick="showImage('image9.jpg')">
                 </div>
                 <button class="nav-button" onclick="scrollThumbnails(1)">&#8594;</button>
             </div>
@@ -37,11 +33,11 @@
             <h2>О товаре</h2>
             <div class="additional-info">
                 <div class="characteristic">
-                    <span>Мощность</span>
-                    <span>1500 Вт</span>
+                    <span>Мощность, Вт:</span>
+                    <span>1500</span>
                 </div>
                 <div class="characteristic">
-                    <span>Вид обогревателя</span>
+                    <span>Вид обогревателя:</span>
                     <span>Тепловентилятор</span>
                 </div>
             </div>
@@ -50,9 +46,7 @@
         <!-- Описание товара -->
         <div class="description">
             <h2>Описание</h2>
-            <p>
-                Тепловентилятор – это идеальный помощник для создания комфортной температуры в вашем доме или офисе в холодное время года...
-            </p>
+            <p>Тепловентилятор – это идеальный помощник для создания комфортной температуры в вашем доме или офисе...</p>
         </div>
 
         <!-- Форма заказа -->
@@ -94,26 +88,6 @@
             const result = await response.json();
             alert(result.message);
         });
-
-        // Обработка свайпов
-        let touchstartX = 0;
-        let touchendX = 0;
-
-        const handleSwipe = (event) => {
-            touchendX = event.changedTouches[0].screenX;
-            handleGesture();
-        };
-
-        const handleGesture = () => {
-            if (touchendX < touchstartX) scrollThumbnails(1); // Swipe left
-            if (touchendX > touchstartX) scrollThumbnails(-1); // Swipe right
-        };
-
-        document.querySelector('.thumbnails').addEventListener('touchstart', (event) => {
-            touchstartX = event.changedTouches[0].screenX;
-        });
-
-        document.querySelector('.thumbnails').addEventListener('touchend', handleSwipe);
     </script>
 </body>
 </html>
