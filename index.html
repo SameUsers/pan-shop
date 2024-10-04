@@ -21,6 +21,9 @@
                     <img src="image4.jpg" alt="Thumbnail 4" onclick="showImage('image4.jpg')">
                     <img src="image5.jpg" alt="Thumbnail 5" onclick="showImage('image5.jpg')">
                     <img src="image6.jpg" alt="Thumbnail 6" onclick="showImage('image6.jpg')">
+                    <img src="image7.jpg" alt="Thumbnail 7" onclick="showImage('image7.jpg')">
+                    <img src="image8.jpg" alt="Thumbnail 8" onclick="showImage('image8.jpg')">
+                    <img src="image9.jpg" alt="Thumbnail 9" onclick="showImage('image9.jpg')">
                 </div>
                 <button class="nav-button" onclick="scrollThumbnails(1)">&#8594;</button>
             </div>
@@ -44,18 +47,32 @@
         </div>
         <div class="form-container">
             <form id="orderForm">
-                <label for="name">Name:</label>
+                <label for="name">Имя:</label>
                 <input type="text" id="name" name="name" required>
-                <label for="phone">Phone:</label>
+                <label for="phone">Телефон:</label>
                 <input type="tel" id="phone" name="phone" required>
-                <button type="submit">Submit</button>
+                <button type="submit">Отправить</button>
             </form>
         </div>
     </div>
 
     <script>
+        let currentIndex = 0;
+        const images = [
+            'image1.jpg',
+            'image2.jpg',
+            'image3.jpg',
+            'image4.jpg',
+            'image5.jpg',
+            'image6.jpg',
+            'image7.jpg',
+            'image8.jpg',
+            'image9.jpg',
+        ];
+
         function showImage(src) {
             document.getElementById('mainImage').src = src;
+            currentIndex = images.indexOf(src);
         }
 
         function scrollThumbnails(direction) {
@@ -63,23 +80,49 @@
             const scrollAmount = 80;
             thumbnailsContainer.scrollLeft += direction * scrollAmount;
         }
+        
+        document.getElementById('mainImage').addEventListener('touchstart', swipeHandler);
+        
+        function swipeHandler(e) {
+            const touch = e.touches[0];
+            const startX = touch.clientX;
 
-        document.getElementById('orderForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
+            const moveHandler = (e) => {
+                const touchMove = e.touches[0];
+                const endX = touchMove.clientX;
 
-            const response = await fetch('/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, phone }),
-            });
+                if (startX - endX > 50) {
+                    showNextImage();
+                    removeEventListeners();
+                } else if (endX - startX > 50) {
+                    showPrevImage();
+                    removeEventListeners();
+                }
+            };
 
-            const result = await response.json();
-            alert(result.message);
-        });
+            const endHandler = () => {
+                removeEventListeners();
+            };
+
+            const removeEventListeners = () => {
+                window.removeEventListener('touchmove', moveHandler);
+                window.removeEventListener('touchend', endHandler);
+            };
+
+            window.addEventListener('touchmove', moveHandler);
+            window.addEventListener('touchend', endHandler);
+        }
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(images[currentIndex]);
+        }
+
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(images[currentIndex]);
+        }
+
     </script>
 </body>
 </html>
