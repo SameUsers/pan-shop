@@ -3,10 +3,12 @@ body {
     font-family: Arial, sans-serif;
     background-color: #1a1a1a;
     color: #f0f0f0;
+    margin: 0; /* Убираем отступы у body */
+    padding: 0; /* Убираем отступы у body */
 }
 
 .container {
-    max-width: 800px;
+    max-width: 800px; /* Максимальная ширина */
     margin: 0 auto;
     padding: 20px;
     display: flex;
@@ -33,12 +35,12 @@ body {
     padding: 10px;
 }
 .selected-image img {
-    max-width: 100%;
-    max-height: 500px;
+    max-width: 100%; /* Максимальная ширина изображения */
+    max-height: 500px; /* Ограничение по высоте */
     border-radius: 8px;
 }
 
-/* Стили для левой панели миниатюр */
+/* Стили для панели миниатюр */
 .thumbnail-panel {
     display: flex;
     align-items: center; /* Центрируем элементы по вертикали */
@@ -50,15 +52,15 @@ body {
 }
 
 .thumbnails {
-    display: flex; /* Делаем горизонтальную прокрутку */
+    display: flex; /* Горизонтальная прокрутка */
     overflow-x: auto; /* Убираем вертикальный скролл */
     scroll-behavior: smooth; /* Плавная прокрутка */
     flex: 1; /* Занимаем оставшееся пространство */
 }
 
 .thumbnail-panel img {
-    width: 80px;
-    height: auto;
+    width: 10vw; /* Ширина миниатюр в vw для адаптивности */
+    height: auto; /* Автоматическая высота */
     cursor: pointer;
     border-radius: 4px;
     transition: transform 0.2s ease;
@@ -177,13 +179,19 @@ button:hover {
     }
 
     .thumbnail-panel {
-        flex-direction: row; /* Горизонтальное расположение для мобильной версии */
-        justify-content: space-between; /* Расположение кнопок и изображений */
-        overflow-x: auto; /* Убираем вертикальный скролл */
+        flex-direction: column; /* Вертикальное расположение для мобильной версии */
+        overflow-x: hidden; /* Убираем горизонтальный скролл */
+    }
+
+    .thumbnails {
+        flex-direction: row; /* Горизонтальное расположение для миниатюр */
+        overflow-x: auto; /* Горизонтальный скролл для миниатюр */
+        width: 100%; /* Ширина на 100% для адаптивности */
+        scroll-behavior: smooth; /* Плавная прокрутка */
     }
 
     .thumbnail-panel img {
-        width: 70px; /* Уменьшаем размер миниатюр для мобильной версии */
+        width: 15vw; /* Ширина миниатюр в vw для мобильной версии */
     }
 
     .selected-image {
