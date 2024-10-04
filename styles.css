@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -15,31 +16,32 @@ body {
     align-items: center;
 }
 
-/* Стили для основного контента */
+/* Основной контент */
 .main-content {
     display: flex;
-    flex-wrap: wrap; /* Добавлено для переноса на мобильных устройствах */
+    flex-direction: column; /* Изменено для мобильной версии */
     gap: 20px;
     margin-top: 20px;
 }
 
-/* Стили для левой панели миниатюр */
+/* Блок с миниатюрами */
 .thumbnail-panel {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Горизонтальное размещение для мобильной версии */
     align-items: center;
     gap: 10px;
-    width: 100%; /* Занимает 100% ширины на мобильных устройствах */
     background-color: #2a2a2a;
     padding: 10px;
     border-radius: 8px;
-    overflow: hidden;
-}
-.thumbnails {
-    display: flex; /* Горизонтальное расположение миниатюр */
     overflow-x: auto; /* Горизонтальная прокрутка */
-    scroll-behavior: smooth; /* Плавная прокрутка */
+    width: 100%;
 }
+
+.thumbnails {
+    display: flex;
+    gap: 10px;
+}
+
 .thumbnail-panel img {
     width: 80px;
     height: auto;
@@ -47,6 +49,7 @@ body {
     border-radius: 4px;
     transition: transform 0.2s ease;
 }
+
 .thumbnail-panel img:hover {
     transform: scale(1.1);
 }
@@ -59,15 +62,16 @@ body {
     padding: 10px;
     cursor: pointer;
     border-radius: 4px;
-    display: inline-block; /* Для горизонтального расположения */
+    flex-shrink: 0; /* Не позволяет кнопкам сжиматься */
 }
+
 .nav-button:hover {
     background-color: #45a049;
 }
 
 /* Основное изображение */
 .selected-image {
-    flex: 1; /* Занимает оставшееся пространство */
+    width: 100%; /* Растягивается на всю ширину контейнера */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,6 +79,7 @@ body {
     border-radius: 8px;
     padding: 10px;
 }
+
 .selected-image img {
     max-width: 100%;
     max-height: 500px;
@@ -86,13 +91,12 @@ body {
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    margin-top: 20px;
-    width: 100%; /* Занимает 100% ширины */
+    width: 100%; /* Занимает всю доступную ширину */
 }
 
 /* Описание товара */
 .description {
-    width: 100%;
+    width: 100%; /* Занимает всю доступную ширину */
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
@@ -101,33 +105,37 @@ body {
 
 /* Стили для формы */
 .form-container {
-    width: 100%;
+    width: 100%; /* Занимает всю доступную ширину */
     margin-top: 20px;
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
 }
+
 form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+
 input, button {
     padding: 10px;
     font-size: 1em;
     border: none;
     border-radius: 4px;
 }
+
 button {
     background-color: #4CAF50;
     color: #fff;
     cursor: pointer;
 }
+
 button:hover {
     background-color: #45a049;
 }
 
-/* Стили для блока дополнительного описания */
+/* Стили для дополнительной информации */
 .additional-info {
     display: flex;
     flex-direction: column;
@@ -145,13 +153,26 @@ button:hover {
     flex: 1;
 }
 
-/* Медиа-запросы для адаптивности */
+.characteristic span:last-child {
+    text-align: right;
+}
+
+/* Мобильные стили */
 @media (max-width: 768px) {
     .main-content {
-        flex-direction: column; /* Изменение на вертикальное расположение на мобильных устройствах */
-        align-items: center; /* Центрирование содержимого */
+        flex-direction: column; /* Вертикальное расположение для мобильных */
     }
-    .selected-image, .thumbnail-panel {
-        width: 100%; /* Занимает 100% ширины */
+
+    .thumbnail-panel {
+        flex-direction: row; /* Горизонтальное расположение для списка миниатюр */
+        overflow-x: auto; /* Прокрутка по горизонтали */
+    }
+
+    .selected-image {
+        width: 100%; /* Растягивается на всю ширину для мобильной версии */
+    }
+
+    .additional-description, .description, .form-container {
+        width: 100%; /* Занимает всю ширину на мобильных устройствах */
     }
 }
