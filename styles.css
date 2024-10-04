@@ -36,7 +36,7 @@ body {
 .thumbnails {
     display: flex;
     gap: 10px;
-    overflow-x: auto;
+    overflow-x: scroll;
     scroll-behavior: smooth;
 }
 
@@ -91,6 +91,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     width: 100%;
+    margin-top: 20px; /* Добавленный отступ */
 }
 
 .description {
@@ -98,12 +99,12 @@ body {
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-top: 20px; /* Добавленный отступ */
 }
 
 .form-container {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 20px; /* Добавленный отступ */
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
@@ -155,12 +156,11 @@ button:hover {
 
 @media (max-width: 768px) {
     .container {
-        width: 95%;
+        width: 90%;
     }
 
     .main-content {
         flex-direction: column;
-        gap: 15px;
     }
 
     .thumbnail-panel {
@@ -172,15 +172,11 @@ button:hover {
         width: 100%;
     }
 
-    .nav-button {
-        padding: 8px;
+    .thumbnail-panel {
+        gap: 5px; /* Уменьшенный отступ для мобильной версии */
     }
 
     .thumbnail-panel img {
-        width: 60px;
-    }
-
-    input, button {
-        font-size: 0.9em;
+        width: 60px; /* Уменьшенный размер миниатюр */
     }
 }
