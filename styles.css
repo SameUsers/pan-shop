@@ -27,7 +27,6 @@ body {
 /* Блок с миниатюрами */
 .thumbnail-panel {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 10px;
     background-color: #2a2a2a;
@@ -40,6 +39,8 @@ body {
 .thumbnails {
     display: flex;
     gap: 10px;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
 }
 
 .thumbnail-panel img {
@@ -63,6 +64,9 @@ body {
     cursor: pointer;
     border-radius: 4px;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-button:hover {
@@ -72,6 +76,7 @@ body {
 /* Основное изображение */
 .selected-image {
     width: 100%;
+    max-height: 300px; /* Уменьшена максимальная высота */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +87,7 @@ body {
 
 .selected-image img {
     max-width: 100%;
-    max-height: 500px;
+    max-height: 100%; /* Поддерживает пропорции */
     border-radius: 8px;
 }
 
