@@ -73,26 +73,28 @@
             const phone = document.getElementById('phone').value;
 
             // Отправка данных в Telegram
-            const token = '6474489289:AAFhQbXGEpaxMN6I1TGaVzg-8Bmtc8FiknA'; // Замените на токен вашего бота
-            const chatId = '6086517471'; // Замените на ваш chat ID
+            const token = '6474489289:AAFhQbXGEpaxMN6I1TGaVzg-8Bmtc8FiknA'; // Ваш токен бота
+            const chatId = '6086517471'; // Ваш chat ID
 
-            const message = "Hello";
-            const url = "https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}";
+            const message = `Имя покупателя: ${name}\nТелефон покупателя: ${phone}`;
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)};`;
 
-            const response = await fetch(url);
-            const result = await response.json();
+            try {
+                const response = await fetch(url);
+                const result = await response.json();
 
-            if (result.ok) {
-                alert('Данные успешно отправлены!');
-            } else {
-                alert('Ошибка при отправке данных.');
+                if (result.ok) {
+                    alert('Данные успешно отправлены!');
+                } else {
+                    alert('Ошибка при отправке данных: ' + result.description);
+                }
+            } catch (error) {alert('Ошибка: ' + error);
             }
         });
 
         // Добавление поддержки свайпов
         let touchStartX = 0;
-        const mainImage = document.
-        getElementById('mainImage');
+        const mainImage = document.getElementById('mainImage');
         const thumbnails = document.querySelectorAll('.thumbnails img');
 
         mainImage.addEventListener('touchstart', (e) => {
