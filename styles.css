@@ -3,6 +3,7 @@ body {
     background-color: #1a1a1a;
     color: #f0f0f0;
     margin: 20px;
+    margin-top: 0;
     padding: 20px;
 }
 
@@ -145,7 +146,7 @@ button:hover {
 .characteristic span:last-child {
     text-align: right;
 }
-#mainImage{height:500px}
+#mainImage{height:500px;width:500px}
 
 @media (max-width: 768px) {
     .thumbnail-panel {
