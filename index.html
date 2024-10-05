@@ -84,7 +84,6 @@
             alert(result.message);
         });
 
-        // Добавление поддержки свайпов
         let touchStartX = 0;
         const mainImage = document.getElementById('mainImage');
         const thumbnails = document.querySelectorAll('.thumbnails img');
@@ -92,20 +91,19 @@
         mainImage.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         });
-
         mainImage.addEventListener('touchend', (e) => {
             const touchEndX = e.changedTouches[0].screenX;
             const currentSrc = mainImage.src.split('/').pop();
             const currentIndex = Array.from(thumbnails).findIndex(img => img.src.split('/').pop() === currentSrc);
 
             if (touchStartX - touchEndX > 50 && currentIndex < thumbnails.length - 1) {
-                // Свайп влево
                 showImage(thumbnails[currentIndex + 1].src);
             } else if (touchEndX - touchStartX > 50 && currentIndex > 0) {
-                // Свайп вправо
                 showImage(thumbnails[currentIndex - 1].src);
             }
         });
     </script>
 </body>
 </html>
+
+
