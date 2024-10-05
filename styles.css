@@ -67,8 +67,8 @@ body {
 }
 
 .nav-button {
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: orange; /* Оранжевый цвет фона */
+    color: #fff; /* Цвет текста */
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -80,7 +80,7 @@ body {
 }
 
 .nav-button:hover {
-    background-color: #45a049;
+    background-color: darkorange; /* Темно-оранжевый при наведении */
 }
 
 .additional-description,
@@ -117,13 +117,13 @@ input {
 }
 
 button {
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: orange; /* Оранжевый цвет фона для кнопок формы */
+    color: #fff; /* Цвет текста */
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: darkorange; /* Темно-оранжевый при наведении */
 }
 
 .additional-info {
