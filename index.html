@@ -83,10 +83,13 @@
             e.preventDefault();
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
-            const token = '6474489289:AAFhQbXGEpaxMN6I1TGaVzg-8Bmtc8FiknA';const chatId = '6970523236';
 
-            const message = Имя покупателя: ${name}\nТелефон покупателя: ${phone};
-            const url = https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)};
+            // Отправка данных в Telegram
+            const token = '6474489289:AAFhQbXGEpaxMN6I1TGaVzg-8Bmtc8FiknA'; // Ваш токен бота
+            const chatId = '6970523236'; // Ваш chat ID
+
+            const message = `Имя покупателя: ${name}\nТелефон покупателя: ${phone}`;
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)};`;
 
             try {
                 const response = await fetch(url);
@@ -97,11 +100,11 @@
                 } else {
                     alert('Ошибка при отправке данных: ' + result.description);
                 }
-            } catch (error) {
-                alert('Ошибка: ' + error);
+            } catch (error) {alert('Ошибка: ' + error);
             }
         });
 
+        // Добавление поддержки свайпов
         let touchStartX = 0;
         const mainImage = document.getElementById('mainImage');
         const thumbnails = document.querySelectorAll('.thumbnails img');
@@ -115,8 +118,10 @@
             const currentIndex = Array.from(thumbnails).findIndex(img => img.src.split('/').pop() === currentSrc);
 
             if (touchStartX - touchEndX > 50 && currentIndex < thumbnails.length - 1) {
+                // Свайп влево
                 showImage(thumbnails[currentIndex + 1].src);
             } else if (touchEndX - touchStartX > 50 && currentIndex > 0) {
+                // Свайп вправо
                 showImage(thumbnails[currentIndex - 1].src);
             }
         });
