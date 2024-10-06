@@ -71,8 +71,8 @@ body {
 }
 
 .nav-button {
-    background-color: orange; /* Оранжевый цвет фона */
-    color: #fff; /* Цвет текста */
+    background-color: orange;
+    color: #fff;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -84,7 +84,7 @@ body {
 }
 
 .nav-button:hover {
-    background-color: darkorange; /* Темно-оранжевый при наведении */
+    background-color: darkorange;
 }
 
 .additional-description,
@@ -97,8 +97,6 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: #2a2a2a;
-    border-radius: 8px;
     padding: 10px;
 }
 
@@ -127,13 +125,13 @@ input {
 }
 
 button {
-    background-color: orange; /* Оранжевый цвет фона для кнопок формы */
-    color: #fff; /* Цвет текста */
+    background-color: orange;
+    color: #fff;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: darkorange; /* Темно-оранжевый при наведении */
+    background-color: darkorange;
 }
 
 .additional-info {
@@ -167,6 +165,6 @@ button:hover {
     }
 
     .selected-image img {
-        max-height: 300px; /* Уменьшаем высоту для мобильных устройств */
+        max-height: 300px;
     }
 }
